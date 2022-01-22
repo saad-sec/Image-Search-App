@@ -261,7 +261,7 @@ extension ImageCollectionViewController {
     fileprivate func configureUI() {
 
         let optionButton = UIButton(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-        optionButton.setImage(UIImage(named: "Menu"), for: .normal)
+        optionButton.setImage(UIImage(named: "menu"), for: .normal)
         optionButton.addTarget(self, action: #selector(layoutChangeOptionAction), for: .touchUpInside)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: optionButton)
         
