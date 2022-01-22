@@ -55,24 +55,110 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="LIa-1z-pdd">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2Ca-7W-imQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="LIa-1z-pdd" firstAttribute="centerY" secondItem="SK2-wa-cx9" secondAttribute="centerY" id="0Wp-ye-uF1"/>
                             <constraint firstItem="59v-N4-Af6" firstAttribute="leading" secondItem="2Ca-7W-imQ" secondAttribute="leading" id="8Tx-cA-8fc"/>
                             <constraint firstItem="59v-N4-Af6" firstAttribute="top" secondItem="2Ca-7W-imQ" secondAttribute="top" id="AXi-gE-Rfq"/>
                             <constraint firstItem="59v-N4-Af6" firstAttribute="trailing" secondItem="2Ca-7W-imQ" secondAttribute="trailing" id="KDs-q7-FBL"/>
                             <constraint firstItem="59v-N4-Af6" firstAttribute="bottom" secondItem="2Ca-7W-imQ" secondAttribute="bottom" id="gWT-pp-548"/>
+                            <constraint firstItem="LIa-1z-pdd" firstAttribute="centerX" secondItem="SK2-wa-cx9" secondAttribute="centerX" id="maf-3i-gze"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Flicker Images" id="VpI-dc-Hsh"/>
                     <connections>
+                        <outlet property="activityLoader" destination="LIa-1z-pdd" id="bjw-Hs-2ek"/>
                         <outlet property="collectionView" destination="59v-N4-Af6" id="cWp-i6-jQJ"/>
+                        <segue destination="hhl-Vs-yha" kind="show" identifier="ShowPhotoPageView" id="u01-m5-H9V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="17A-Yp-nyO" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="317" y="23"/>
+        </scene>
+        <!--Zoom-->
+        <scene sceneID="lEX-cd-NAg">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="hhl-Vs-yha" customClass="PhotoPageContainerViewController" customModule="FluidPhoto" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vnP-qP-gEL"/>
+                        <viewControllerLayoutGuide type="bottom" id="8g4-qj-ZoI"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="JD8-Vo-7ij">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UCf-oy-bWK">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <connections>
+                                    <segue destination="kV0-0H-ogd" kind="embed" id="YEP-KG-mRp"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Qjj-AU-pyN"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="UCf-oy-bWK" secondAttribute="bottom" id="DOr-ew-81m"/>
+                            <constraint firstAttribute="trailing" secondItem="UCf-oy-bWK" secondAttribute="trailing" id="NQP-xl-Rmx"/>
+                            <constraint firstItem="UCf-oy-bWK" firstAttribute="leading" secondItem="JD8-Vo-7ij" secondAttribute="leading" id="NuN-O0-v3V"/>
+                            <constraint firstItem="UCf-oy-bWK" firstAttribute="top" secondItem="JD8-Vo-7ij" secondAttribute="top" id="odD-9g-1eV"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Zoom" id="KW5-4v-wwF"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bgY-sd-6KC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1117" y="23"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="tLn-0i-M97">
+            <objects>
+                <pageViewController automaticallyAdjustsScrollViewInsets="NO" transitionStyle="scroll" pageSpacing="10" navigationOrientation="horizontal" spineLocation="none" id="kV0-0H-ogd" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="22c-kj-rhi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1958" y="23"/>
+        </scene>
+        <!--Photo Zoom View Controller-->
+        <scene sceneID="RyW-60-Z2f">
+            <objects>
+                <viewController storyboardIdentifier="PhotoZoomViewController" automaticallyAdjustsScrollViewInsets="NO" id="ihd-EM-WDj" customClass="PhotoZoomViewController" customModule="FluidPhoto" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oFY-67-kae"/>
+                        <viewControllerLayoutGuide type="bottom" id="5kV-PN-udH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="U8G-Rn-ayB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TDG-GV-RKw">
+                                <rect key="frame" x="0.0" y="258" width="414" height="380"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="380" id="gYu-eJ-iWa"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ivu-IA-A2p"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="TDG-GV-RKw" firstAttribute="leading" secondItem="Ivu-IA-A2p" secondAttribute="leading" id="L1e-dy-tVy"/>
+                            <constraint firstItem="Ivu-IA-A2p" firstAttribute="trailing" secondItem="TDG-GV-RKw" secondAttribute="trailing" id="Mkb-v6-XPq"/>
+                            <constraint firstItem="TDG-GV-RKw" firstAttribute="centerY" secondItem="U8G-Rn-ayB" secondAttribute="centerY" id="e7Q-J0-pXD"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="newImageView" destination="TDG-GV-RKw" id="esk-01-hOn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sLH-BH-ydY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2873.913043478261" y="22.767857142857142"/>
         </scene>
     </scenes>
     <resources>

@@ -25,4 +25,9 @@ struct FPhoto: Codable {
         let urlString = String(format: ImageSearchConstants.imageURL, farm, server, id, secret)
         return urlString
     }
+    
+    var mainImageURL: String {
+        let urlString = String(format: ImageSearchConstants.mainImageURL, farm, server, id, secret)
+        return urlString
+    }
 }

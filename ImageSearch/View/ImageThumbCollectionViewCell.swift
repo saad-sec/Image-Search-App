@@ -26,7 +26,7 @@ class ImageThumbCollectionViewCell: UICollectionViewCell {
     var model: ImageModel? {
         didSet {
             if let model = model {
-                placeHolderImageView.image = UIImage(named: "placeholder")
+                placeHolderImageView.image = UIImage(named: "Hourglass")
                 imageView.downloadImage(model.imageURL)
             }
         }

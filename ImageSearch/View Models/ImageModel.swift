@@ -15,3 +15,16 @@ struct ImageModel {
         imageURL = photo.imageURL
     }
 }
+
+struct MainImageModel {
+
+    let thumbImageURL: String
+    let mainImageURL: String
+    let title: String
+    
+    init(withPhotos photo: FPhoto) {
+        thumbImageURL = photo.imageURL
+        mainImageURL = photo.mainImageURL
+        title = photo.title
+    }
+}

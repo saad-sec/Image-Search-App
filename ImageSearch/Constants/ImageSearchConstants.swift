@@ -15,6 +15,8 @@ class ImageSearchConstants: NSObject {
     static let searchURL = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=\(ImageSearchConstants.api_key)&format=json&nojsoncallback=1&safe_search=1&per_page=\(ImageSearchConstants.per_page)&text=%@&page=%ld"
     static let imageURL = "https://farm%d.staticflickr.com/%@/%@_%@_\(ImageSearchConstants.size.url_q.value).jpg"
     
+    static let mainImageURL = "https://farm%d.staticflickr.com/%@/%@_%@_\(ImageSearchConstants.size.url_l.value).jpg"
+    
     enum size: String {
         case url_sq = "s"   //small square 75x75
         case url_q = "q"    //large square 150x150

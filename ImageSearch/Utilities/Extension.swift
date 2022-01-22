@@ -12,17 +12,24 @@ extension UICollectionView {
 //MARK:- UIImageView
 extension UIImageView {
     
-    func downloadImage(_ url: String) {
+    func downloadImage(_ url: String, withAnimation: Bool = true) {
         
         DownloadManager.shared.addOperation(url: url,imageView: self) {  [weak self](result,downloadedImageURL)  in
             DispatchQueue.main.async {
                 switch result {
                 case .Success(let image):
-                    self?.alpha = 0.0
-                    self?.image = image
-                    UIView.animate(withDuration: 0.15, animations: {
+                    
+                    if(withAnimation){
+                        self?.alpha = 0.0
+                        self?.image = image
+                        UIView.animate(withDuration: 0.15, animations: {
+                            self?.alpha = 1.0
+                        }, completion: nil)
+                    }else{
                         self?.alpha = 1.0
-                    }, completion: nil)
+                        self?.image = image
+                    }
+                    
                     
                 case .Failure(_):
                     break
@@ -32,4 +39,5 @@ extension UIImageView {
             }
         }
     }
+    //completion: @escaping (Result<Data>) -> Void
 }
